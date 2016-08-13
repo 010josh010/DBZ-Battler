@@ -1,0 +1,92 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+    background-image: url('http://amxxcs.ru/download/dbz-background-2mMTZxx')
+}
+
+.game{
+    width:100%; 
+    height:600px;
+    position:fixed; 
+    margin-top:20px; 
+}
+
+.main-menu{
+     width:100%; 
+     height:100%;
+     display:none; 
+}
+
+.character-select{
+     width:100%; 
+     height:100%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif; 
+    color:#fff; 
+    text-shadow: 3px 1px #000; 
+   
+}
+
+.character-select h1{
+    font-size:2em; 
+}
+
+.character-preview{
+      width:25%; 
+      height:400px; 
+      z-index: 1;
+      margin:0 2.5%; 
+      
+}
+
+.character-choice-grid{
+    float:left; 
+    width:40%; 
+    height:200px;
+    
+}
+
+.character-choice-info{
+    margin:50px 0; 
+    height:50px; 
+    display:inline-block; 
+}
+
+.player-character-name{
+   
+    width:20%; 
+    margin-left:150px;
+   
+}
+
+.computer-character-name{
+    width:10%;
+    float:right; 
+    
+}
+
+.character-choice-grid img{
+    width:10%; 
+    height:10%;
+    border:3px solid #fff; 
+}
+
+#player-preview{
+      float:left; 
+}
+
+#computer-preview{
+    float:right; 
+}
+
+.map-select{
+     width:100%; 
+     height:100%; 
+     display:none; 
+}
+
+.battler{
+     width:100%; 
+     height:100%; 
+     display:none; 
+}
