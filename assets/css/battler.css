@@ -23,7 +23,7 @@ i{
 
 .game{
     width:100%; 
-    height:600px;
+    height:700px;
     position:fixed; 
     text-align: center;
     font-family: Saiyan, sans-serif;
@@ -51,7 +51,7 @@ i{
 
 .btn{
     font-size:1.5em;  
-    background-color: #1a1a1a;
+    background-color: transparent; 
     font-family: Saiyan, sans-serif; 
     color:yellow; 
     border:none;
