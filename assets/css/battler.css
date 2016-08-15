@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: Saiyan;
-    src: url(/assets/fonts/Saiyan-Sans.ttf); 
+    src: url(../fonts/Saiyan-Sans.ttf); 
 }
 body{
     background-color:#000; 
