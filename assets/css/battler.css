@@ -1,34 +1,106 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body{
-    background-image: url('http://amxxcs.ru/download/dbz-background-2mMTZxx')
+    background-color:#000; 
+}
+
+h1{
+    font-size:2em;
+    margin:10px; 
 }
 
 .game{
     width:100%; 
     height:600px;
     position:fixed; 
+    text-align: center;
+    font-family: 'Open Sans', sans-serif; 
+    color:#fff; 
+    text-shadow: 1px 1px #000;
     margin-top:20px; 
+  
 }
 
 .main-menu{
-     width:100%; 
-     height:100%;
-     display:none; 
+     display:none;
+    background-image: url('http://amxxcs.ru/download/dbz-background-2mMTZxx');
+    background-size:cover; 
+     background-attachment: fixed; 
+     background-repeat: no-repeat; 
 }
+
+.main-menu img{
+    width:75%; 
+    height:400px; 
+    margin:25px 0px; 
+    
+}
+
+.btn{
+    font-size:1.5em; 
+    font-family: 'Open Sans',sans-serif; 
+    background-color: #1a1a1a; 
+    color:#fff; 
+    border:none;
+    cursor:pointer; 
+}
+
 
 .character-select{
      width:100%; 
      height:100%;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif; 
-    color:#fff; 
-    text-shadow: 3px 1px #000; 
+     display:none;
+     background-image: url('http://amxxcs.ru/download/dbz-background-2mMTZxx');
+     background-size:cover; 
+     background-attachment: fixed; 
+     background-repeat: no-repeat; 
    
 }
 
-.character-select h1{
-    font-size:2em; 
+.character-choice-info{
+    margin:50px 0; 
+    height:50px;
+    font-size:1em; 
+}
+
+.character-choice-info h2{
+    display:inline-block; 
+}
+
+#player-character-name{
+    width:10%;
+    height:1em; 
+    display:inline-block;
+    margin:0 5px; 
+   
+}
+
+#computer-character-name{
+    width:10%;
+    display:inline-block; 
+    height:1em; 
+    margin:0 5px; 
+    
+    
+}
+.character-choice-grid{
+    float:left; 
+    width:40%; 
+    height:350px;
+    
+}
+
+.character-choice-grid img{
+    width:100%; 
+    height:85%; 
+}
+
+.character-choice-grid-icons{
+    width:150px; 
+    height:150px; 
+    border:3px solid #fff;
+    display:inline-block;
+    cursor:pointer; 
 }
 
 .character-preview{
@@ -39,36 +111,9 @@ body{
       
 }
 
-.character-choice-grid{
-    float:left; 
-    width:40%; 
-    height:200px;
-    
-}
-
-.character-choice-info{
-    margin:50px 0; 
-    height:50px; 
-    display:inline-block; 
-}
-
-.player-character-name{
-   
-    width:20%; 
-    margin-left:150px;
-   
-}
-
-.computer-character-name{
-    width:10%;
-    float:right; 
-    
-}
-
-.character-choice-grid img{
-    width:10%; 
-    height:10%;
-    border:3px solid #fff; 
+.character-preview img{
+    width:100%; 
+    height:100%; 
 }
 
 #player-preview{
@@ -82,11 +127,78 @@ body{
 .map-select{
      width:100%; 
      height:100%; 
-     display:none; 
+     display:none;
+     background-image: url('http://amxxcs.ru/download/dbz-background-2mMTZxx');
+     background-size:cover; 
+     background-attachment: fixed; 
+     background-repeat: no-repeat; 
+}
+
+
+
+.map-choice-grid{
+    width:100%; 
+    height:400px; 
+    margin-top:50px; 
+}
+
+.map-choice-grid-icons{
+    width:200px; 
+    height:200px;
+    display:inline-block; 
+    cursor:pointer;
+    border:3px solid #fff; 
+    margin:0 15px; 
+}
+
+.map-choice-grid-icons img{
+    width:100%; 
+    height:100%;
+    cursor: pointer; 
+   
 }
 
 .battler{
      width:100%; 
      height:100%; 
      display:none; 
+     background-image:none; 
+     background-size:cover; 
+     background-attachment: fixed; 
+     background-repeat: no-repeat; 
 }
+
+.battler img{
+    width:80%; 
+    height:400px; 
+}
+
+.battle-block{
+    width:45%; 
+    height:400px;
+    margin-top:25px; 
+}
+
+
+#player-battler{
+   float:left;
+}
+
+#player-battler-hp{
+    width:30%; 
+    
+}
+
+#computer-battler{
+    float:right; 
+}
+
+#computer-battler-hp{
+    width:30%;  
+}
+.results{
+    clear:both; 
+    width:100%; 
+    margin:15px; 
+}
+

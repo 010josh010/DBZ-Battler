@@ -3,8 +3,13 @@
 <head>
 	<meta charset='UTF-8'>
 	<meta name = 'viewport' content='width= device-width, initial-scale = 1'>
+	
+	
+  
+  	 <!--- reset css ---> 
     <link rel ='stylesheet' type='text/css' href="assets/css/reset.css">
-	<link rel = 'stylesheet' type='text/css' href = 'assets/css/theme.css'> 
+
+	<!--- battler css ---> 
 	<link rel = 'stylesheet' type='text/css' href = 'assets/css/battler.css'> 
 
 
@@ -19,7 +24,10 @@
     <div class = 'game'>
 		<!--- Main Manu --> 
 		<div class = 'main-menu'>
-		    <h1>Main Menu</h1>
+		    <h1>Dragonball Z Battle</h1>
+		    <img src= 'https://lh4.googleusercontent.com/-_X_KyUYdTXE/VBbkDFI9VDI/AAAAAAAAA2k/jDCv4z2T3v0/w1024-h576/dbz_by_fidamrad-d6u7yv6.png'> 
+		    <div></div>
+		    <button id='start-game' class='btn'>Click to start</button>
 		</div>
 		
 		<!--- Character select menu --> 
@@ -29,9 +37,9 @@
 		      <div id ='computer-preview' class = 'character-preview'></div>
 		      
 		      <div class = 'character-choice-info'>
-                    <div class = 'player-character-name'></div>
-                    <h1>VS</h1>
-                    <div class = 'computer-character-name'></div>
+                    <div id= 'player-character-name'></div>
+                    <h2>VS</h2>
+                    <div id= 'computer-character-name'></div>
                 </div>
                 
             <div class = 'character-choice-grid'></div>
@@ -43,6 +51,7 @@
 		<!--- Map Select menu --> 
 		<div class = 'map-select'>
 		    <h1> Map Select</h1>
+		    <div class = 'map-choice-grid'></div>
 		  </div>
 		
 		
@@ -51,11 +60,20 @@
 		
 		<div class = 'battler'>
 		    <h1> Battler</h1>
+		    <button id='fight' class = 'btn'>Fight</button>
+		    
+		    <div id ='player-battler' class='battle-block'>
+		    </div>
+		    <div id = 'computer-battler' class='battle-block'>
+		    </div>
+		     <div></div>
+		    <div class = 'results'></div>
 		</div> 
+        
 		    
     </div> 
 </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src = 'battler.js'></script>
 </body>
 </html>
