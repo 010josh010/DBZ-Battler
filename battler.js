@@ -87,13 +87,14 @@ function setCharacter(character){
         computerCharacter = character;
         $('#computer-preview').html('<img src =' +computerCharacter.prevImg +'>'); 
         $('#computer-character-name').html(computerCharacter.name); 
-        
+         $('.character-choice-grid-icons').off('click'); 
         setTimeout(Game.mapSelect, 2000); 
     }
 }
 
 function setMap(mapChoice){
     map = mapChoice;
+     $('.map-choice-grid-icons').off('click'); 
     setTimeout(Game.battle, 2000); 
 }
 
@@ -124,7 +125,7 @@ function changeScreen(screen){
 
 function loadMaps(){
    for(i = 0 ; i < Game.maps.length; i++){
-        $('.map-choice-grid').append('<div id='+ Game.maps[i].name + ' class=\'map-choice-grid-icons\'><img src ='+ Game.maps[i].img + '>'+ Game.maps[i].name + '</div>'); 
+        $('.map-choice-grid').append('<div id='+ Game.maps[i].name + ' class=\'map-choice-grid-icons\'><img src ='+ Game.maps[i].img + '><i>'+ Game.maps[i].name + '</i></div>'); 
    }
 }
 
@@ -176,9 +177,6 @@ function battleProcessor(){
     else if(computerCharacter.hp === 0){
         win(); 
     }
-    
-    
-    
 }
 
 function lose(){
@@ -206,8 +204,6 @@ var Namek = new Map('Namek', 'https://images3.alphacoders.com/677/677271.png');
 
 var WorldTournament = new Map('WorldTournament', 'http://img14.deviantart.net/7f8f/i/2014/299/a/2/dragon_ball_xenoverse_1023_12_by_somdude424-d8472h1.jpg'); 
 
-
-
 //atacks
 var Kamehameha = new Attack('Kamehameha', 15, 50); 
 var Strike = new Attack('Strike', 5, 75); 
@@ -229,7 +225,6 @@ var GoldenFreeza = new Transformation('Golden', 200);
 var gokuMoves = [Kamehameha, SpiritBomb, Strike, Guard];
 var freezaMoves = [DeathBeam, DeathBall, Strike, Guard]; 
 var vegetaMoves = [GalickGun, FinalFlash, Strike, Guard]; 
-
 
 
 //Game 
@@ -319,14 +314,6 @@ $('#start-game').on('click', function(){
     Game.characterSelect(); 
 })
 
-
-
 //calls 
 
 Game.mainMenu(); 
-
-
-
-
-
-
