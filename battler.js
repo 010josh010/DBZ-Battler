@@ -5,8 +5,6 @@ var playerCharacter;
 var computerCharacter;
 var map; 
 
-
-
 //audio
 var menuMusic = new Audio('assets/audio/menu-music.mp3');
 togglePlay(menuMusic, true);
@@ -47,7 +45,7 @@ var Map = function(name,img){
 //images 
 var gokuIcon = 'http://static.comicvine.com/uploads/original/11125/111257581/4862622-goku_by_spongeboss-d35orzj.png'; 
 
-var gokuPrev= 'http://vignette2.wikia.nocookie.net/mcleodgaming/images/0/09/Goku.png/revision/latest?cb=20151210150735'; 
+var gokuPrev= 'http://pre14.deviantart.net/81d7/th/pre/f/2015/356/2/3/marvel_vs__capcom_3__goku_by_kingoffiction-d9l0lzj.png'; 
 
 var gokuBattle = 'http://img02.deviantart.net/f22d/i/2015/156/f/0/goku_battle_damaged_alt_palette__3_by_rayzorblade189-d8w40rz.png'; 
 
@@ -55,11 +53,11 @@ var freezaIcon ='https://lh3.googleusercontent.com/-rYyHdxTDGg0/Vdq8KVu03xI/AAAA
 
 var freezaPrev ='http://www.awesysnet.ca/cptdb/uploads/GoldenFreeza-1.png'; 
 
-var freezaBattle = 'http://vignette3.wikia.nocookie.net/deathbattlefanon/images/a/a6/Golden_Frieza.png/revision/latest?cb=20150810045513'; 
+var freezaBattle = 'http://3.bp.blogspot.com/-rUjwHREiAVQ/VcxJLgYkXxI/AAAAAAAAFr4/MusRsmnCsxs/s1600/freezer%2Bforma%2Bdorada%2Bgolden%2Bfreezer%2B-%2Banimacionbeta.png'; 
 
 var vegetaIcon = 'https://lh3.googleusercontent.com/-HRbuJxEKNM8/VUTW47d9M-I/AAAAAAAAB34/QmgG2gUUu-4/w337-h337-p/vegeta_fukkatsu_no_f_by_bardocksonic-d8l8yqm.png'; 
 
-var vegetaPrev = 'http://orig07.deviantart.net/4b80/f/2015/257/c/3/vegeta_super_saiyan_god_super_saiyan_by_bardocksonic-d99inex.png'; 
+var vegetaPrev = 'http://vignette1.wikia.nocookie.net/vsbattles/images/a/a9/Vegeta.png/revision/latest?cb=20151225064607'; 
 
 var vegetaBattle= 'http://pre06.deviantart.net/af97/th/pre/i/2015/277/5/2/vegeta_volando_by_saodvd-d9bz4m1.png'; 
 
@@ -131,9 +129,14 @@ function loadMaps(){
 }
 
 function loadBattler(){
-    $('#player-battler').append('<div id =\'player-battler-hp\'>'+playerCharacter.hp+'</div>')
+    $('#player-battler').append('<progress class=\'health-bar\' id=\'player-health\' value='+playerCharacter.hp+' max=\'100\'></progress>'); 
+    
+    $('#player-battler').append('<div id =\'player-battler-hp\'>'+playerCharacter.hp+ '</div>'); 
+    
     $('#player-battler').append('<img src='+ playerCharacter.battleImg + '>'); 
-    $('#computer-battler').append('<div id =\'computer-battler-hp\'>'+computerCharacter.hp+'</div>')
+    
+    $('#computer-battler').append('<progress class=\'health-bar\' id=\'computer-health\' value='+computerCharacter.hp+' max=\'100\'></progress>'); 
+    $('#computer-battler').append('<div id =\'computer-battler-hp\'>'+computerCharacter.hp+ '</div>'); 
     $('#computer-battler').append('<img src='+ computerCharacter.battleImg + '>'); 
     
 
@@ -148,12 +151,15 @@ function battleProcessor(){
     if(rand > 5){
         computerCharacter.hp -= 10;
         hit = computerCharacter.name;
-        console.log('computer hit'); 
+        console.log('computer hit');
+        $('#computer-health').attr('value', computerCharacter.hp);
+        
     }
     else{
         playerCharacter.hp -= 10;
         hit = playerCharacter.name;
-        console.log('player hit'); 
+        console.log('player hit');
+        $('#player-health').attr('value', playerCharacter.hp);   
     }
     
     $('#player-battler-hp').html(playerCharacter.hp); 
@@ -161,8 +167,9 @@ function battleProcessor(){
     console.log(playerCharacter.hp); 
     console.log(computerCharacter.hp);
     
-    $('.results').html('<p>'+hit+' was damaged'+'</p>'); 
+    $('.results').html('<p>'+hit+' <i>was</i> <span>damaged</span>'+'</p>'); 
     
+        
     if(playerCharacter.hp === 0){
         lose(); 
     }
@@ -176,13 +183,13 @@ function battleProcessor(){
 
 function lose(){
     $('#fight').off('click'); 
-    $('.results').html('<p> You Lose!</p>');
+    $('.results').html('<p> You <span>Lose!</span></p>');
     setTimeout(Game.reset, 2000); 
 }
 
 function win(){
     $('#fight').off('click'); 
-    $('.results').html('<p> You Win!</p>');
+    $('.results').html('<p> You <span>Win!</span></p>');
     setTimeout(Game.reset, 2000); 
 }
 
@@ -247,6 +254,7 @@ var Game = {
                 setCharacter(collection[i]); 
                 }
             }
+           $(this).css('border-color', 'crimson'); 
            console.log(playerCharacter); 
            console.log(computerCharacter); 
 
@@ -264,7 +272,7 @@ var Game = {
                 setMap(collection[i]); 
                 }
             }
-     
+           $(this).css('border-color', 'crimson');
            console.log(map); 
        })
    },
@@ -281,6 +289,9 @@ var Game = {
     cleanup:function(){
         playerCharacter.hp =100; 
         computerCharacter.hp=100; 
+        $('#player-health').val(playerCharacter.hp); 
+        $('#computer-health').val(computerCharacter.hp); 
+        
         playerCharacter = undefined; 
         computerCharacter = undefined; 
         map = undefined;
