@@ -4,10 +4,11 @@
 	<meta charset='UTF-8'>
 	<meta name = 'viewport' content='width= device-width, initial-scale = 1'>
 	
-	
-  
   	 <!--- reset css ---> 
     <link rel ='stylesheet' type='text/css' href="assets/css/reset.css">
+    
+    <!---jquery ui css---> 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 
 	<!--- battler css ---> 
 	<link rel = 'stylesheet' type='text/css' href = 'assets/css/battler.css'> 
@@ -25,7 +26,7 @@
 		<!--- Main Manu --> 
 		<div class = 'main-menu'>
 		    <h1>Drag<i>o</i>n<span>ball Z </span>Battle</h1>
-		    <img src= 'http://img03.deviantart.net/4745/i/2013/069/7/e/viva_goku_by_bardocksonic-d5xl689.png'> 
+		    <img src="assets/img/menu.png">  
 		    <div></div>
 		    <button id='start-game' class='btn'>Click t<i>o</i> <span>start</span></button>
 		</div>
@@ -67,13 +68,19 @@
 		    <div id = 'computer-battler' class='battle-block'>
 		    </div>
 		     <div></div>
-		    <div class = 'results'></div>
+		    <div class = 'readout'></div>
 		</div> 
         
 		    
     </div> 
 </div>
+   <!--- jquery js ---> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <!--- jquery ui js ---> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    
+    <!--- battler.js ---> 
     <script src = 'battler.js'></script>
 </body>
 </html>
