@@ -198,14 +198,14 @@ i{
 }
 
 #player-battler-hp{
-    width:15%;
+    width:100px;
     display: inline-block; 
-    font-size:.6em;
+    font-size:20px;
     
 }
 #player-battler-ki{
-    width:15%; 
-    font-size:.6em;
+    width:100px; 
+    font-size:20px;
     display: inline-block; 
 }
 
@@ -215,20 +215,25 @@ i{
     display:inline-block; 
 }
 
+.ki-bar{
+    height:10px; 
+     
+}
+
 
 #computer-battler{
     float:right; 
 }
 
 #computer-battler-hp{
-    width:15%;
+    width:100px;
      display:inline-block;
-    font-size:.6em; 
+    font-size:20px; 
 }
 
 #computer-battler-ki{
-    width:15%; 
-    font-size:.6em;
+    width:100px; 
+    font-size:20px;
     display:inline-block; 
 
 }
