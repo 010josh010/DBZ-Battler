@@ -198,35 +198,48 @@ i{
 }
 
 #player-battler-hp{
-    width:30%;
-    display:inline-block; 
+    width:15%;
+    display: inline-block; 
+    font-size:.6em;
     
+}
+#player-battler-ki{
+    width:15%; 
+    font-size:.6em;
+    display: inline-block; 
 }
 
 .health-bar{
-    border:1px solid #fff; 
-
+    background-color:green;
+    height: 10px; 
+    display:inline-block; 
 }
+
 
 #computer-battler{
     float:right; 
 }
 
 #computer-battler-hp{
-    width:30%;
-     display:inline-block; 
+    width:15%;
+     display:inline-block;
+    font-size:.6em; 
+}
+
+#computer-battler-ki{
+    width:15%; 
+    font-size:.6em;
+    display:inline-block; 
+
 }
 
 .attack-btn{
     font-size:1em;
     display: inline-block;
-    margin:15px; 
+    margin:5px; 
     
 }
 
-.attack-btn:hover{
-    color:aqua; 
-}
 
 .power-btn{
      font-size:1em;
@@ -234,18 +247,11 @@ i{
      margin:15px; 
 }
 
-.power-btn:hover{
-    color:aqua; 
-}
 
 #guard{
      font-size:1em;
      display: inline-block;
      margin:15px; 
-}
-
-#guard:hover{
-    color:aqua; 
 }
 
 #transform:hover{
@@ -254,6 +260,6 @@ i{
 .readout{
     clear:both; 
     width:100%; 
-    margin:15px; 
+    margin:5px; 
 }
 

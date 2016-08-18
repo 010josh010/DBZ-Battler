@@ -9,7 +9,19 @@ var map;
 
 //audio
 var menuMusic = new Audio('assets/audio/menu-music.mp3');
-togglePlay(menuMusic, true);
+var battleMusic = new Audio('assets/audio/battle-music.mp3');
+var soundBeamMiss = new Audio('assets/audio/beam-miss.mp3'); 
+var soundBeamFire = new Audio('assets/audio/beam-fire.mp3'); 
+var soundDeathBall = new Audio('assets/audio/deathball-fire.mp3');
+var soundFinalFlash = new Audio('assets/audio/final-flash-fire.mp3');
+var soundGokuTransformation = new Audio('assets/audio/goku-transformation.mp3'); 
+var soundKamehameha = new Audio('assets/audio/kamehameha-fire.mp3'); 
+var soundSpiritBomb = new Audio('assets/audio/spirit-bomb.mp3'); 
+var soundMiss = new Audio('assets/audio/miss.mp3'); 
+var soundPowerUp = new Audio('assets/audio/powerup.mp3'); 
+var soundStrike = new Audio('assets/audio/strike.mp3');
+var soundStrike2 = new Audio('assets/audio/strike2.mp3');
+var soundStrike3 = new Audio('assets/audio/strike3.mp3');
 
 //images 
 var gokuIcon = 'assets/img/goku-icon.png'; 
@@ -24,6 +36,11 @@ var vegetaIcon = 'assets/img/vegeta-icon.png';
 var vegetaPrev = 'assets/img/vegeta-prev.png'; 
 var vegetaBattle= 'assets/img/vegeta-battle.png'; 
 var vegetaTransformation = 'assets/img/vegeta-transformation.png'; 
+var piccoloIcon = 'assets/img/piccolo-icon.png'; 
+var piccoloPrev = 'assets/img/piccolo-prev.png'
+var piccoloBattle= 'assets/img/piccolo-battle.png'
+var piccoloTransformation= 'assets/img/piccolo-transformation.png'
+
 
 //constructors 
 var Character = function(name,iconImg,prevImg,battleImg, hp, ki, attacks, transformation){
@@ -40,18 +57,19 @@ var Character = function(name,iconImg,prevImg,battleImg, hp, ki, attacks, transf
    
 }
 
-var Attack = function(name,damage,energy, chance){
+var Attack = function(name,sound,damage,energy, chance,type){
     this.name = name;
+    this.sound=sound; 
     this.damage = damage;
     this.energy = energy; 
     this.chance = chance; 
+    this.type = type; 
 }
 
-
-
-var Transformation = function(name,img, multiplier){
+var Transformation = function(name,img,sound, multiplier){
     this.name = name; 
     this.img = img; 
+    this.sound=sound; 
     this.multiplier = multiplier; 
   
 }
@@ -63,39 +81,43 @@ var Map = function(name,img){
 
 
 //atacks
-var Kamehameha = new Attack('Kamehameha', 20,20, 45); 
-var Strike = new Attack('Strike', 5,0, 75); 
-var SpiritBomb= new Attack('Spirit Bomb', 50,50, 10);
-var DeathBeam = new Attack('Death Beam', 20,20,50, 45); 
-var DeathBall = new Attack('Death Ball', 50, 10);
-var GalickGun = new Attack('Galick Gun', 20,20, 45); 
-var FinalFlash = new Attack('Final Flash', 50,50, 10); 
+var Kamehameha = new Attack('Kamehameha',soundKamehameha, 20,20, 45,'energy'); 
+var Strike = new Attack('Strike',soundStrike, 5,0, 75,'physical'); 
+var Strike2 = new Attack('Strike',soundStrike2, 5,0, 75,'physical'); 
+var Strike3= new Attack('Strike',soundStrike3, 5,0, 75,'physical'); 
+var SpiritBomb= new Attack('SpiritBomb',soundSpiritBomb, 50,50,10,'energy');
+var DeathBeam = new Attack('DeathBeam',soundBeamFire, 20,20,45,'energy'); 
+var DeathBall = new Attack('DeathBall',soundDeathBall, 50,50,10,'energy');
+var GalickGun = new Attack('GalickGun',soundBeamFire, 20,20, 45,'energy'); 
+var FinalFlash = new Attack('FinalFlash',soundFinalFlash, 50,50, 10,'energy'); 
+var SpecialBeamCannon = new Attack('SpecialBeamCannon',soundBeamFire, 20,20, 45,'energy');
+var HellzoneGrenade = new Attack('HellzoneGrenade',soundBeamFire, 50,50, 10,'energy'); 
 
 
 //transformations
-var SuperSaiyanGodGoku = new Transformation('Super Saiyan God Goku',gokuTransformation, 2);
-var SuperSaiyanGodVegeta = new Transformation('Super Saiyan God Vegeta', vegetaTransformation ,2); 
-var GoldenFreeza = new Transformation('Golden Freeza',freezaTransformation,  2); 
+var SuperSaiyanGodGoku = new Transformation('Super Saiyan God Goku',gokuTransformation,soundGokuTransformation, 2);
+var SuperSaiyanGodVegeta = new Transformation('Super Saiyan God Vegeta', vegetaTransformation,soundPowerUp, 2); 
+var GoldenFreeza = new Transformation('Golden Freeza',freezaTransformation,soundPowerUp,  2); 
+var FuseWithNail = new Transformation('Fusion With Nail',piccoloTransformation,soundPowerUp, 2); 
 
 //moves lists
 var gokuMoves = [Kamehameha, SpiritBomb, Strike];
-var freezaMoves = [DeathBeam, DeathBall, Strike]; 
-var vegetaMoves = [GalickGun, FinalFlash, Strike]; 
+var freezaMoves = [DeathBeam, DeathBall, Strike3]; 
+var vegetaMoves = [GalickGun, FinalFlash, Strike2];
+var piccoloMoves =[SpecialBeamCannon, HellzoneGrenade, Strike]; 
 
 //maps 
-
 var Namek = new Map('Namek', 'assets/img/namek.png'); 
 var WorldTournament = new Map('WorldTournament', 'assets/img/worldtournament.png'); 
+var Country = new Map('Country' ,'assets/img/country.png'); 
 
 //characters
 var Goku = new Character('Goku',gokuIcon,gokuPrev,gokuBattle, 100, 20, gokuMoves, SuperSaiyanGodGoku ); 
 var Freeza = new Character('Freeza', freezaIcon,freezaPrev,freezaBattle, 100,20, freezaMoves, GoldenFreeza); 
-var Vegeta = new Character('Vegeta', vegetaIcon,vegetaPrev,vegetaBattle, 100,20, vegetaMoves, SuperSaiyanGodVegeta); 
-
-
+var Vegeta = new Character('Vegeta', vegetaIcon,vegetaPrev,vegetaBattle, 100,20, vegetaMoves, SuperSaiyanGodVegeta);
+var Piccolo = new Character('Piccolo', piccoloIcon, piccoloPrev, piccoloBattle, 100,20,piccoloMoves,FuseWithNail); 
 
 //game functions 
-
 //plays a sound effect
 function playSound(sound){
 	sound.play(); 
@@ -108,7 +130,7 @@ function togglePlay(song, loopControl) {
 }
 
 //checks to see if the music is paused and turns it off if its playing
-function isPlaying(){
+function isPlaying(music){
      
     if(music.paused === false){
         togglePlay(music, false);
@@ -120,8 +142,10 @@ function setCharacter(character){
     if(!playerCharacter){
         playerCharacter = character;
         $('#player-preview').html('<img src ='+playerCharacter.prevImg+ '>');
-        $('#player-character-name').html(playerCharacter.name); 
+        $('#player-character-name').html(playerCharacter.name);
+        $('#'+playerCharacter.name).off('click'); 
     }
+    
     else{
         computerCharacter = character;
         $('#computer-preview').html('<img src =' +computerCharacter.prevImg +'>'); 
@@ -173,21 +197,27 @@ function loadMaps(){
 
 //loads the elements on the battler screen 
 function loadBattler(){
-    //player elements to load 
-    $('#player-battler').append('<div id =\'player-battler-hp\'>'+playerCharacter.hp+ '</div>'); 
-    $('#player-battler').append('<div id =\'player-battler-ki\'>' +playerCharacter.ki + '</div>'); 
+    //player health and ki elements to load 
+    $('#player-battler').append('<progress id=\'player-health-bar\' value=100 max=100 class =\'health-bar\'></progress>'); 
+    $('#player-battler').append('<div id =\'player-battler-hp\'>'+playerCharacter.hp+ '</div>');
+     $('#player-battler').append('<progress id=\'player-ki-bar\' value=20 max=100 class =\'ki-bar\'></progress>'); 
+    $('#player-battler').append('<div id =\'player-battler-ki\'>' +playerCharacter.ki + '</div>');
+
+    //loads attack buttons 
     $('#player-battler').append('<img id=\'player-battler-img\' src='+ playerCharacter.battleImg + '>');
     for(var i = 0 ; i < playerCharacter.attacks.length; i++){
         $('#player-battler').append('<div id='+playerCharacter.attacks[i].name+' class =\'btn attack-btn\'><span>'+playerCharacter.attacks[i].name+'</span></div>'); 
     }
-    
+    //loads power and guard buttons
     $('#player-battler').append('<div id=\'guard\' class =\'btn\'><i>Guard</i></div>'); 
     $('#player-battler').append('<div id=\'power-up\' class =\'btn power-btn\'><i>Power</i><span> Up</span></div>'); 
     $('#player-battler').append('<div id=\'transform\' class =\'btn power-btn\'>Transform</div>');
     
-    //computer elements to load 
+    //computer health and ki elements to load 
+    $('#computer-battler').append('<progress id=\'computer-health-bar\' value=100 max=100 class =\'health-bar\'></progress>'); 
     $('#computer-battler').append('<div id =\'computer-battler-hp\'>'+computerCharacter.hp+ '</div>');
-    $('#computer-battler').append('<div id =\'computer-battler-ki\'>' +computerCharacter.ki + '</div>'); 
+    $('#computer-battler').append('<progress id=\'computer-ki-bar\' value=20 max=100 class =\'ki-bar\'></progress>'); 
+    $('#computer-battler').append('<div id =\'computer-battler-ki\'>' +computerCharacter.ki + '</div>');
     $('#computer-battler').append('<img id =\'computer-battler-img\' src='+ computerCharacter.battleImg + '>'); 
     
 
@@ -248,11 +278,15 @@ function computerTurn(){
 	if(attacker.ki === 100 && attacker.isTransformed === false){
 		transform(); 
 	}
-	else if(choice >= 30 && choice <= 50){
+	else if(choice >= 35 && choice <= 50){
 		guard(); 
 	}
 	else if(choice > 50){
-		attackCalc(undefined); 
+		if(attacker.ki < 20){
+            attackCalc(attacker.attacks[2]); 
+        } else{
+            attackCalc(undefined); 
+        }
 	}
 	else{
 		powerUp(); 
@@ -310,13 +344,24 @@ function hpReduction(damage){
             damage / 2 ; 
         }
 	}
-	defender.hp -= damage;
+    if(defender.hp - damage <= 0){
+        defender.hp = 0; 
+    }
+    else{
+        defender.hp -= damage;
+    }
+	
      updateHp(); 
 }
 
 //reduces the amount of ki a character has 
 function kiReduction(energy){
-	attacker.ki -= energy;
+    if(attacker.ki - energy <= 0){
+        attacker.ki = 0 ; 
+    }
+	else{
+        attacker.ki -= energy;
+    }
     updateKi();
 }
 
@@ -326,7 +371,7 @@ function powerUp(){
 	attacker.ki += x; 
     if(attacker.ki > 100){
         attacker.ki = 100; 
-        $('.readout').html('<p><i>'+ attacker.name + ' is at full power!</i></p>');
+        $('.readout').html('<p><i>'+ attacker.name + ' is at <i>full</i> <span>power!</span></p>');
         setTimeout(nextTurn, 3000);
         console.log('attacker ki: '+attacker.ki);
         
@@ -336,20 +381,24 @@ function powerUp(){
 	   setTimeout(nextTurn, 3000);
        console.log('attacker ki: '+attacker.ki);
     }
+    playSound(soundPowerUp); 
      updateKi(); 
 }
 
 //transforms attacking character
 function transform(){
 	if(attacker.ki === 100 && attacker.isTransformed === false){
-		attacker.isTransformed = true; 
         if(attacker.name === playerCharacter.name){
-            $('#player-battler-img').attr('src', playerCharacter.transformation.img); 
-            multiplier(playerCharacter, 2, 10); 
+            $('#player-battler-img').attr('src', playerCharacter.transformation.img);
+            playSound(playerCharacter.transformation.sound); 
+            multiplier(playerCharacter, 2, 10);
+            attacker.isTransformed = true; 
         }
         else{
             $('#computer-battler-img').attr('src', computerCharacter.transformation.img);
-            multiplier(computerCharacter, 2, 10); 
+            playSound(computerCharacter.transformation.sound);
+            multiplier(computerCharacter, 2, 10);
+            attacker.isTransformed = true; 
         }
 		$('.readout').html('<p>'+ attacker.name + ' transformed to <i>' +attacker.transformation.name + '</i></p>'); 
 		setTimeout(nextTurn, 3000);
@@ -384,6 +433,29 @@ function kiChecker(energy){
 	}
 }
 
+//fades the character to simulate damage
+function strikeFlicker(){
+    if(defender.name === playerCharacter.name){
+         $('#player-battler-img').fadeTo('slow', 0);
+         $('#player-battler-img').fadeTo('fast',100);   
+
+    }
+    else{
+        
+         $('#computer-battler-img').fadeTo('slow', 0);
+         $('#computer-battler-img').fadeTo('fast',100); 
+    }
+}
+
+function death(character){
+    if(character === 'computer'){
+        $('#computer-battler-img').fadeTo('slow', 0); 
+    }
+    else if(character === 'player'){
+        $('#player-batter-img').fadeTo('slow', 0); 
+    }
+}
+
 //sets status to guarding 
 function guard(){
 	attacker.status = 'guarding';
@@ -408,14 +480,18 @@ function statusReady(){
 
 //updates the current hp on the screen 
 function updateHp(){
-     $('#player-battler-hp').html(playerCharacter.hp); 
-    $('#computer-battler-hp').html(computerCharacter.hp);
+    $('#player-battler-hp').html('<div>'+playerCharacter.hp+ '</div>');
+    $('#player-health-bar').attr('value', playerCharacter.hp); 
+    $('#computer-battler-hp').html('<div>'+computerCharacter.hp+ '</div>');
+    $('#computer-health-bar').attr('value',computerCharacter.hp); 
 }
 
 //updates the current ki on the screen
 function updateKi(){
-     $('#player-battler-ki').html(playerCharacter.ki); 
-     $('#computer-battler-ki').html(computerCharacter.ki);
+     $('#player-battler-ki').html('<div>' +playerCharacter.ki + '</div>');
+     $('#player-ki-bar').attr('value',playerCharacter.ki);
+     $('#computer-battler-ki').html('<div>'+computerCharacter.ki + '</div>');
+     $('#computer-ki-bar').attr('value', computerCharacter.ki); 
 }
 
 //checks to see if you defeated the computer
@@ -439,31 +515,41 @@ function lossChecker(){
     }
 }
 
-
 //when a character hits thier attack 
 function hit(attack){
+    playSound(attack.sound); 
 	kiReduction(attack.energy); 
-	hpReduction(attack.damage); 
+	hpReduction(attack.damage);
 	$('.readout').html('<p><i>'+ attacker.name + '</i><span> damaged</span> ' + defender.name + ' with a <i>' + attack.name + '</i></p>');
     if(winChecker()){
-        $('.readout').html('<p> You <span>Win!</span></p>'); 
+        $('.readout').html('<p> You <span>Win!</span></p>');
+        death('computer');  
         setTimeout(Game.reset, 5000);
     }
     else if(lossChecker()){
-        $('.readout').html('<p> You <span>Lose!</span></p>'); 
+        $('.readout').html('<p> You <span>Lose!</span></p>');
+        death('player');  
         setTimeout(Game.reset, 5000);
         
     }
     else{
+        if(attack.type === 'energy'){
+            setTimeout(strikeFlicker, 1500); 
+        }
+        else{
+            strikeFlicker(); 
+        }
        setTimeout(nextTurn, 3000); 
     }
-	
-   
-    
-	
 }
 // when a character misses attack 
 function miss(attack){
+    if(attack.type === 'energy'){
+        playSound(soundBeamMiss); 
+    }
+    else{
+        playSound(soundMiss); 
+    }
 	kiReduction(attack.energy); 
 	$('.readout').html('<p><i>' + attacker.name + '</i><span> missed!</span> </p>');
 	setTimeout(nextTurn, 3000);
@@ -472,13 +558,16 @@ function miss(attack){
 //Game 
 var Game = {
     
-   characters:[Goku, Freeza, Vegeta],
+   characters:[Goku, Freeza, Vegeta, Piccolo],
     
-   maps:[Namek, WorldTournament],
+   maps:[Namek, WorldTournament, Country],
     
     //starts the game 
     start:function(){
         changeScreen('.main-menu');
+        isPlaying(battleMusic);
+        menuMusic.currentTime = 0; 
+        togglePlay(menuMusic, true);
     },
     //starts the character select menu
    characterSelect:function(){
@@ -515,7 +604,10 @@ var Game = {
        })
    },
     //starts the batller
-    battle: function(){
+    battle: function(){ 
+        isPlaying(menuMusic);
+        battleMusic.currentTime= 0; 
+        togglePlay(battleMusic ,true); 
         changeScreen('.battler');
         displayMap(); 
         loadBattler();
@@ -551,7 +643,6 @@ var Game = {
 }
 
 //onclick handlers 
-
 $('#start-game').on('click', function(){
     Game.characterSelect(); 
 })
